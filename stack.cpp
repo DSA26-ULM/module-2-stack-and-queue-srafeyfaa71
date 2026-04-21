@@ -1,12 +1,13 @@
 #include "stack.h"
 #include <stdexcept>
+#include <iostream>
 
 void init(Stack* s) {
-    s->top = &(s->data[-1]); 
+    s->top = NULL;
 }
 
 bool isEmpty(const Stack* s) {
-    return (s->top == &(s->data[-1]));
+    return (s->top == NULL);
 }
 
 bool isFull(const Stack* s) {
@@ -14,23 +15,27 @@ bool isFull(const Stack* s) {
 }
 
 void push(Stack* s, int value) {
-    if (isFull(s)) {
-        throw std::runtime_error("Stack Penuh!");
+    if (isFull(s)) throw std::runtime_error("Stack Penuh!");
+    
+    if (isEmpty(s)) {
+        s->top = &(s->data[0]);
+    } else {
+        s->top++;
     }
-    s->top++;
     *(s->top) = value;
 }
 
 void pop(Stack* s) {
-    if (isEmpty(s)) {
-        throw std::runtime_error("Stack Kosong!");
+    if (isEmpty(s)) throw std::runtime_error("Stack Kosong!");
+    
+    if (s->top == &(s->data[0])) {
+        s->top = NULL;
+    } else {
+        s->top--;
     }
-    s->top--;
 }
 
 int peek(const Stack* s) {
-    if (isEmpty(s)) {
-        throw std::runtime_error("Stack Kosong!");
-    }
+    if (isEmpty(s)) throw std::runtime_error("Stack Kosong!");
     return *(s->top);
 }
