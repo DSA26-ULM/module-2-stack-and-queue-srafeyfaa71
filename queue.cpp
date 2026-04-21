@@ -16,7 +16,7 @@ bool isFull(const Queue* q) {
     
     int* nextRear;
     if (q->rear == &(q->data[MAX - 1])) {
-        nextRear = &(q->data[0]);
+        nextRear = (int*)&(q->data[0]); 
     } else {
         nextRear = q->rear + 1;
     }
