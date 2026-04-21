@@ -44,15 +44,11 @@ void dequeue(Queue* q) {
 }
 
 int front(const Queue* q) {
-    if (isEmpty(q)) {
-        throw std::runtime_error("Queue Kosong!");
-    }
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     return *(q->front);
 }
 
 int back(const Queue* q) {
-    if (isEmpty(q)) {
-        throw std::runtime_error("Queue Kosong!");
-    }
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     return *(q->rear);
 }
