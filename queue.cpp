@@ -1,5 +1,6 @@
 #include "queue.h"
 #include <stdexcept>
+#include <iostream>
 
 void init(Queue* q) {
     q->front = NULL;
@@ -28,7 +29,7 @@ void enqueue(Queue* q, int value) {
 }
 
 void dequeue(Queue* q) {
-    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");                
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     
     if (q->front == q->rear) {
         q->front = NULL;
@@ -39,9 +40,11 @@ void dequeue(Queue* q) {
 }
 
 int front(const Queue* q) {
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     return *(q->front);
 }
 
 int back(const Queue* q) {
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     return *(q->rear);
 }
