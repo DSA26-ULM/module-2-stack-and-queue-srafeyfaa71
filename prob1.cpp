@@ -26,6 +26,6 @@ int main() {
             push(&s, stoi(input));
         }
     }
-    cout << peek(&s) << endl;
+    cout << peek(&s) << endl; 
     return 0;
 }
