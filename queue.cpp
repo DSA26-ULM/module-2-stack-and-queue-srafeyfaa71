@@ -12,7 +12,10 @@ bool isEmpty(const Queue* q) {
 }
 
 bool isFull(const Queue* q) {
-    return (q->rear == &(q->data[MAX - 1]));
+    if (q->rear == &(q->data[MAX - 1])) {
+        return true;
+    }
+    return false;
 }
 
 void enqueue(Queue* q, int value) {
@@ -43,15 +46,11 @@ void dequeue(Queue* q) {
 }
 
 int front(const Queue* q) {
-    if (isEmpty(q)) {
-        throw std::runtime_error("Queue Kosong!");
-    }
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     return *(q->front);
 }
 
 int back(const Queue* q) {
-    if (isEmpty(q)) {
-        throw std::runtime_error("Queue Kosong!");
-    }
+    if (isEmpty(q)) throw std::runtime_error("Queue Kosong!");
     return *(q->rear);
 }
